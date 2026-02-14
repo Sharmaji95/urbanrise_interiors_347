@@ -316,13 +316,19 @@ body {
 }
 
 .social-content.open {
-    max-height: 500px;
+    max-height: 60vh;
+    overflow-y: auto;
     opacity: 1;
     margin-top: 5px;
     /* Spacing when open */
     padding: 15px;
     /* Expanded padding */
     border-color: var(--card-border);
+}
+
+/* Specific override for FAQ to show ~4 items */
+#faqContent.open {
+    max-height: 240px;
 }
 
 .social-subtitle {
@@ -507,4 +513,66 @@ body {
 
 .link-card:nth-child(n) {
     animation-delay: 0.1s;
+}
+
+/* FAQ Dropdown Section */
+.faq-dropdown-section {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.faq-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item.active {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent-color);
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.faq-question i {
+    font-size: 14px;
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    padding: 0 15px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    /* Adjust based on content */
+    padding-bottom: 15px;
 }
